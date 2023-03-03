@@ -8,8 +8,9 @@ const loadTools = async() =>{
 const displayTools = tools =>{
 
     const toolsContainer = document.getElementById('tool-container');
-
+    
     // display all features
+    toggleSpinner(true);
     tools.tools.forEach(tool => {
         const toolDiv = document.createElement('div')
         toolDiv.classList.add('col')
@@ -30,7 +31,7 @@ const displayTools = tools =>{
                     </div>
 
                     <div>
-                    <i class="fas fa-arrow-right" onclick="showDetails('${tools.id}')" style="font-size:25px; background-color: antiquewhite; border-radius: 50%;"></i>
+                    <i class="fas fa-arrow-right text-danger" onclick="showDetails('${tools.id}')" style="font-size:25px; background-color: antiquewhite; border-radius: 50%;"></i>
                     
                     </div>
                     </div>
@@ -39,11 +40,23 @@ const displayTools = tools =>{
         `
         toolsContainer.appendChild(toolDiv)
     });
+    // stop loader 
+    toggleSpinner(false)
 }
 const showDetails = id =>{
-    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`
+    const url = `https://openapi.programming-hero.com/api/ai/tools/${id}`
     fetch(url)
     .then(res => res.json())
     .then(data => console.log(data))
+}
+//  start loader
+const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('loader')
+    if(isLoading){
+        loaderSection.classList.remove('d-none')
+    }
+    else{
+        loaderSection.classList.add('d-none')
+    }
 }
 loadTools();
