@@ -100,8 +100,8 @@ const loadData = async (dataLimit, sortByDate) => {
   
   const displayDetails = modal =>{
     console.log(modal);
-    const modalSection = document.getElementById("modal-container");
-    modalSection.innerHTML = ''; 
+    const modalContainer = document.getElementById("modal-container");
+    modalContainer.innerHTML = ''; 
     const modalDiv = document.createElement("div");
     modalDiv.classList.add("row");
     modalDiv.innerHTML =`
@@ -110,48 +110,59 @@ const loadData = async (dataLimit, sortByDate) => {
           <h4 class="mb-4">${modal.description}</h4>
           <div class="row">
             <div class="col-md-4 mb-3 mb-md-0">
-              <p class="text-success rounded p-4 text-center  text-green" style="background-color: #ebe9e9;">$10/month<br/>Pro</p>
+              <p class="text-success rounded p-4 text-center  text-green" style="background-color: #ebe9e9;">${modal.pricing ? modal.pricing[0].plan : 'Free Plan/ '}</br>
+              ${modal.pricing ? modal.pricing[0].price : 'Basic'}</p>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
-              <p class="text-success rounded p-4 text-center  text-orange" style="background-color: #ebe9e9;">$10/month<br/>Basic</p>
+              <p class="text-success rounded p-4 text-center  text-orange" style="background-color: #ebe9e9;">${modal.pricing ? modal.pricing[1].plan : 'Free Plan/ '}</br>
+              ${modal.pricing ? modal.pricing[1].price : 'Pro'}</p>
             </div>
             <div class="col-md-4">
-              <p class="text-success rounded p-4 text-center  text-danger" style="background-color: #ebe9e9;">Contact <br> us <br> Enterprise</p>
+              <p class="text-success rounded p-4 text-center  text-danger" style="background-color: #ebe9e9;">${modal.pricing ? modal.pricing[2].plan : 'Free Plan/ '}
+              ${modal.pricing ? modal.pricing[2].price : 'Enterprise'}</p>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <h4 class="mt-4">Features</h4>
               <ul>
-                <li>Customizable responses</li>
-                <li>Customizable responses</li>
-                <li>Customizable responses</li>
+                <li>${modal.features[1].feature_name}</li>
+                <li>${modal.features[2].feature_name}</li>
+                <li>${modal.features[3].feature_name}</li>
               </ul>
             </div>
             <div class="col-md-6">
               <h4 class="mt-4">Integrations</h4>
               <ul>
-                <li>FB Messenger</li>
-                <li>FB Messenger</li>
-                <li>FB Messenger</li>
+                <li>${modal.integrations[0]}</li>
+                <li>${modal.integrations[1]}</li>
+                <li>${modal.integrations[2]}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
       <div class="col-lg-6 mt-4 mt-lg-0">
-      <div class="position-absolute top-0  p-2 ">
-         <button class="btn btn-danger">${modal.accuracy.score ? modal.accuracy.score:"" } % accuracy</button >
-      </div>
+  
+        <div>
+        <div class="position-relative">
         <img src="${modal.image_link[0]}" class="img-fluid" alt="">
+          <div style="top:20px;right:20px;" class="bg-danger rounded position-absolute p-2
+              ${modal.accuracy.score ? 'accuracy' : 'd-none'}">
+          <h6 class="text-white">
+              ${modal.accuracy.score ? `<span>${modal.accuracy.score*100}</span>% accuracy` : ''}
+          </h6>
+        </div>
+</div>
+        </div>
         <div class="text-center mt-4">
-          <h4>Hi, how are you doing today?</h4>
+          <h4>${modal.input_output_examples ? modal.input_output_examples[0].input : "Can you give any example?"}</h4>
           <p>I'm doing well, thank you for asking. How can I assist you today?</p>
         </div>
       </div>
 
     `;
-    modalSection.appendChild(modalDiv);
+    modalContainer.appendChild(modalDiv);
   }
   
   
