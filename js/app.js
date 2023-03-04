@@ -152,8 +152,8 @@ const loadData = async (dataLimit, sortByDate) => {
           <h6 class="text-white">
               ${modal.accuracy.score ? `<span>${modal.accuracy.score*100}</span>% accuracy` : ''}
           </h6>
-        </div>
-</div>
+          </div>
+          </div>
         </div>
         <div class="text-center mt-4">
           <h4>${modal.input_output_examples ? modal.input_output_examples[0].input : "Can you give any example?"}</h4>
