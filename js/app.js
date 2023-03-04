@@ -47,7 +47,7 @@ const loadData = async (dataLimit, sortByDate) => {
               <h5>${tool.name}</h5>
               <span class="fs-6"><i class="bi bi-calendar3"></i> ${tool.published_in}</span>
             </div>
-            <div><button onclick="loadDetails('${tool.id}')" style="border-radius: 25px"; class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-arrow-right-short text-danger fs-4"></i></button></div>
+            <div><button onclick="loadDetails('${tool.id}')" style="border-radius: 25px; background-color: #ebcccc;" ; class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-arrow-right-short text-danger fs-4" ></i></button></div>
           </div>
         </div>
       `;
@@ -124,7 +124,7 @@ const loadData = async (dataLimit, sortByDate) => {
           </div>
           <div class="row">
             <div class="col-md-6">
-              <h4 class="mt-4">Features</h4>
+              <h3 class="mt-4">Features</h3>
               <ul>
                 <li>${modal.features[1].feature_name}</li>
                 <li>${modal.features[2].feature_name}</li>
@@ -132,7 +132,7 @@ const loadData = async (dataLimit, sortByDate) => {
               </ul>
             </div>
             <div class="col-md-6">
-              <h4 class="mt-4">Integrations</h4>
+              <h3 class="mt-4">Integrations</h3>
               <ul>
                 <li>${modal.integrations[0]}</li>
                 <li>${modal.integrations[1]}</li>
@@ -146,9 +146,9 @@ const loadData = async (dataLimit, sortByDate) => {
   
         <div>
         <div class="position-relative">
-        <img src="${modal.image_link[0]}" class="img-fluid" alt="">
-          <div style="top:20px;right:20px;" class="bg-danger rounded position-absolute p-2
-              ${modal.accuracy.score ? 'accuracy' : 'd-none'}">
+        <img src="${modal.image_link[0]}" class="img-fluid" >
+          <div style="top:25px; right:25px;" class="bg-danger rounded position-absolute p-2
+              ${modal.accuracy.score ? 'Accuracy' : 'd-none'}">
           <h6 class="text-white">
               ${modal.accuracy.score ? `<span>${modal.accuracy.score*100}</span>% accuracy` : ''}
           </h6>
@@ -156,8 +156,8 @@ const loadData = async (dataLimit, sortByDate) => {
           </div>
         </div>
         <div class="text-center mt-4">
-          <h4>${modal.input_output_examples ? modal.input_output_examples[0].input : "Can you give any example?"}</h4>
-          <p>I'm doing well, thank you for asking. How can I assist you today?</p>
+          <h4>${modal.input_output_examples ? modal.input_output_examples[0].input : "Give us some example?"}</h4>
+          <p>${modal.input_output_examples ? modal.input_output_examples[1].input : "Give us some example?"}</p>
         </div>
       </div>
 
