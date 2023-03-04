@@ -140,12 +140,16 @@ const loadData = async (dataLimit, sortByDate) => {
         </div>
       </div>
       <div class="col-lg-6 mt-4 mt-lg-0">
-        <img src="./image/chat_gpt_shutterstock_Ebru-Omer.jpg" class="img-fluid" alt="">
+      <div class="position-absolute top-0  p-2 ">
+         <button class="btn btn-danger">${modal.accuracy.score ? modal.accuracy.score:"" } % accuracy</button >
+      </div>
+        <img src="${modal.image_link[0]}" class="img-fluid" alt="">
         <div class="text-center mt-4">
           <h4>Hi, how are you doing today?</h4>
           <p>I'm doing well, thank you for asking. How can I assist you today?</p>
         </div>
       </div>
+
     `;
     modalSection.appendChild(modalDiv);
   }
